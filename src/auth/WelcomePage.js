@@ -3,6 +3,8 @@ import { useTailwind } from 'tailwind-rn'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import tw from 'twrnc'
 import { AntDesign, Feather, FontAwesome5 } from '@expo/vector-icons' // Import icons from Expo
+import TabBar from '../Tab_Bar/TabBar'
+import { SimpleLineIcons, Ionicons, MaterialIcons } from '@expo/vector-icons'
 
 export default function RegistrationScreen({ navigation }) {
   const tailwind = useTailwind()
@@ -17,42 +19,35 @@ export default function RegistrationScreen({ navigation }) {
   }
 
   return (
-    <View style={tw`bg-lime-500 flex-1 justify-start items-center pt-16`}>
-      {/* Tab Bar */}
+    <View style={tw`bg-gray-200 flex-1 justify-start items-center pt-16`}>
+      {/* Top Bar */}
       <View
-        style={tw`absolute bottom-0 left-0 right-0 p-4 flex-row justify-around items-center bg-white shadow-md`}>
-        {/* Home Tab */}
-        <TouchableOpacity
-          onPress={navigateToAnotherPage}
-          style={tw`flex-1 items-center`}>
-          <AntDesign name="home" size={24} color="black" />
-          <Text style={tw`text-xs`}>Home</Text>
+        style={tw`absolute top-0 left-0 right-0 p-4 rounded-2 m-2 shadow-2xl flex-row justify-around items-center bg-white shadow-md`}>
+        <TouchableOpacity onPress={navigateToAnotherPage} style={tw`flex-1 `}>
+          <SimpleLineIcons name="menu" size={18} color="black" />
         </TouchableOpacity>
-
-        {/* Services Tab */}
-        <TouchableOpacity
-          onPress={navigateToAnotherPage}
-          style={tw`flex-1 items-center`}>
-          <Feather name="box" size={24} color="black" />
-          <Text style={tw`text-xs`}>Services</Text>
-        </TouchableOpacity>
-
-        {/* Cart Tab */}
-        <TouchableOpacity
-          onPress={navigateToAnotherPage}
-          style={tw`flex-1 items-center`}>
-          <FontAwesome5 name="shopping-cart" size={24} color="black" />
-          <Text style={tw`text-xs`}>Cart</Text>
-        </TouchableOpacity>
-
-        {/* Profile Tab */}
-        <TouchableOpacity
-          onPress={navigateToAnotherPage}
-          style={tw`flex-1 items-center`}>
-          <AntDesign name="user" size={24} color="black" />
-          <Text style={tw`text-xs`}>Profile</Text>
+        <TouchableOpacity onPress={navigateToAnotherPage} style={tw`right-0 `}>
+          <MaterialIcons name="notifications-none" size={26} color="black" />
         </TouchableOpacity>
       </View>
+      {/* Top Bar end */}
+
+      {/* 4 box middle */}
+      <View
+        style={tw`absolute mt-30 ml-4 left-0 w-3/7 h-1/3 p-4 rounded-2  shadow-2xl flex-row justify-around items-center bg-white shadow-md`}></View>
+
+      <View
+        style={tw`absolute mt-30 ml-2 right-0 w-3/7 mr-4 h-1/3 p-4 rounded-2  shadow-2xl flex-row justify-around items-center bg-white shadow-md`}></View>
+
+      <View
+        style={tw`absolute mt-30 ml-4 left-0 bottom-35 w-3/7 h-1/3 p-4 rounded-2  shadow-2xl flex-row justify-around items-center bg-white shadow-md`}></View>
+
+      <View
+        style={tw`absolute mt-30 ml-2 bottom-35 right-0 w-3/7 mr-4 h-1/3 p-4 rounded-2  shadow-2xl flex-row justify-around items-center bg-white shadow-md`}></View>
+
+      {/* middle box end */}
+
+      <TabBar navigateToAnotherPage={navigateToAnotherPage} />
 
       {/* Search Bar */}
       <TextInput
@@ -62,7 +57,7 @@ export default function RegistrationScreen({ navigation }) {
         maxLength={40}
         onChangeText={onChangeText}
         value={email}
-        style={tw`text-black bg-white pl-10 pr-10 rounded-4 mt-4`}
+        style={tw`text-black bg-white w-3/4 p-1 text-center shadow-2xl rounded-4 mt-3`}
         placeholder="Search what you need!!"
         placeholderTextColor="gray"
       />
